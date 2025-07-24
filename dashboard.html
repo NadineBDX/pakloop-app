@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Pakloop Client</title>
+</head>
+<body>
+  <h1>Bienvenue client <span id="clientId"></span></h1>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    document.getElementById("clientId").textContent = id || "inconnu";
+  </script>
+</body>
+</html>
