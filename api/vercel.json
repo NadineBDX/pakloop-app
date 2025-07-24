@@ -1,5 +1,5 @@
 {
-  "rewrites": [
-    { "source": "/alias", "destination": "/api/alias.js" }
+  "routes": [
+    { "src": "/alias", "dest": "alias.js" }
   ]
 }
