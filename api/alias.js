@@ -1,6 +1,3 @@
-import fs from "fs";
-import path from "path";
-
 export default function handler(req, res) {
   const alias = req.query.alias;
 
@@ -17,14 +14,11 @@ export default function handler(req, res) {
     return;
   }
 
-  // Lire le contenu de dashboard.html
-  const filePath = path.resolve("./", "dashboard.html");
-  let html = fs.readFileSync(filePath, "utf8");
+  // Redirection vers la WebApp Apps Script universelle
+  const webAppURL = "https://script.google.com/macros/s/AKfycbwUhfff5D7VopLqu2OexQl_NNjjlpnkMNSCYFFSvu1FzsfNT-zM19QTYqfQFRAkFhuw/exec";
 
-  // Remplacer <?= id ?> dans le HTML
-  html = html.replace("<?= id ?>", id);
-
-  // Envoyer la page
-  res.setHeader("Content-Type", "text/html; charset=utf-8");
-  res.status(200).send(html);
+  res.writeHead(302, {
+    Location: `${webAppURL}?id=${id}`
+  });
+  res.end();
 }
