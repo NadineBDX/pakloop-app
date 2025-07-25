@@ -3,12 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>Pakloop Client</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    h1 { color: #003366; }
+  </style>
 </head>
 <body>
   <h1>Bienvenue client <span id="clientId"></span></h1>
+
+  <iframe id="clientApp" width="100%" height="900" frameborder="0" style="border:1px solid #ccc"></iframe>
+
   <script>
-    const id = "<?= id ?>";  // Injecté dynamiquement depuis alias.js
+    const id = "<?= id ?>";
     document.getElementById("clientId").textContent = id || "inconnu";
+    
+    const webAppURL = "https://script.google.com/macros/s/AKfycbxH8A1fsw3mgxhMaryvDvHyqJEtT8QJpTZmJbteSwtUIjnR6wqGY4nLmvseyekYD6o-/exec?id=" + encodeURIComponent(id);
+    document.getElementById("clientApp").src = webAppURL;
   </script>
 </body>
 </html>
